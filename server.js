@@ -82,6 +82,27 @@ app.post('/students', async (req, res) => {
   return res.json({message});
 });
 
+app.put('/students/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+
+  const {name, lang, missionCommander, enrollments, hasCertification} = req.body
+
+	await prisma.student.update({
+		where: {
+			id
+		},
+		data: {
+			name,
+      lang,
+      missionCommander,
+      enrollments,
+      hasCertification
+		}
+	})
+
+	return res.json({message: "Actualizado correctamente"});
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
