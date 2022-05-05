@@ -3,47 +3,45 @@ const prisma = new PrismaClient();
 
 (async function main() {
   try {
-    const woopa = await prisma.explorer.upsert({
-      where: { name: 'Woopa' },
+    const ewok = await prisma.student.upsert({
+      where: { id: 1 },
       update: {},
       create: {
-        name: 'Woopa',
-				username: 'ajolonauta',
-				mission: 'Node'
+        name: 'Ewok',
+				lang: 'JavaScript',
+				missionCommander: 'Woopa 5',
+        enrollments: 3,
+        hasCertification: false
       },
     });
 
-    const woopa1 = await prisma.explorer.upsert({
-      where: { name: 'Woopa1' },
+    const ewok1 = await prisma.student.upsert({
+      where: { id: 2 },
       update: {},
       create: {
-        name: 'Woopa1',
-				username: 'ajolonauta1',
-				mission: 'Node'
+        name: 'Ewok 1',
+				lang: 'Java',
+				missionCommander: 'Woopa 5',
+        enrollments: 2,
+        hasCertification: true
       },
     });
 
-    const woopa2 = await prisma.explorer.upsert({
-      where: { name: 'Woopa 2' },
+    const ewok2 = await prisma.student.upsert({
+      where: { id: 3 },
       update: {},
       create: {
-        name: 'Woopa 2',
-				username: 'ajolonauta2',
-				mission: 'Java'
+        name: 'Ewok 2',
+				lang: 'Node',
+				missionCommander: 'Woopa 5',
+        enrollments: 3,
+        hasCertification: true
       },
     });
 
-    const woopa3 = await prisma.explorer.upsert({
-      where: { name: 'Woopa 3' },
-      update: {},
-      create: {
-        name: 'Woopa 3',
-				username: 'ajolonauta3',
-				mission: 'Node'
-      },
-    });
+    
 
-    console.log('Create 3 explorers');
+    console.log('Create 3 students');
   } catch(e) {
     console.error(e);
     process.exit(1);
