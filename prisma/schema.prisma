@@ -11,11 +11,20 @@ datasource db {
 }
 
 model Explorer {
-  id Int @id @default(autoincrement())
-  name String @unique
-  username String @db.VarChar(255)
-  mission String @db.VarChar(255)
-  azureCertification Boolean @default(false)
-  dateCreated DateTime @default(now())
-  lastUpdated DateTime @updatedAt
+  id                 Int      @id @default(autoincrement())
+  name               String   @unique
+  username           String   @db.VarChar(255)
+  mission            String   @db.VarChar(255)
+  azureCertification Boolean  @default(false)
+  dateCreated        DateTime @default(now())
+  lastUpdated        DateTime @updatedAt
+}
+
+model Student {
+  id               Int     @id @default(autoincrement())
+  name             String
+  lang             String  @db.VarChar(255)
+  missionCommander String  @db.VarChar(255)
+  enrollments      Int
+  hasCertification Boolean @default(false)
 }
