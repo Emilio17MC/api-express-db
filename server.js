@@ -118,6 +118,11 @@ app.delete('/students/:id', async (req, res) => {
 	return res.json({message: "Eliminado correctamente"});
 });
 
+app.get('/mc', async (req, res) => {
+  const allCommanders = await prisma.missionCommander.findMany({});
+  res.json(allCommanders);
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
