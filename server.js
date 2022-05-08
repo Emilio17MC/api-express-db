@@ -123,6 +123,12 @@ app.get('/mc', async (req, res) => {
   res.json(allCommanders);
 });
 
+app.get('/mc/:id', async (req, res) => {
+  const id = req.params.id;
+  const missionCommander = await prisma.missionCommander.findUnique({where: {id:parseInt(id)}});
+  res.json(missionCommander);
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
