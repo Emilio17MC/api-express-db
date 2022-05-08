@@ -147,6 +147,25 @@ app.post('/mc', async (req, res) => {
   return res.json({message});
 });
 
+app.put('/mc/:id', async (req, res) => {
+  const id = parseInt(req.params.id);
+
+  await prisma.missionCommander.update({
+    where: {
+      id
+    },
+    data: {
+      name: req.body.name,
+      username: req.body.username,
+      mainStack: req.body.mainStack,
+      currentEnrollment: req.body.currentEnrollment,
+      hasAzureCertification: req.body.hasAzureCertification
+    }
+  });
+
+  return res.json({message: "Actualizado correctamente"});
+})
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
