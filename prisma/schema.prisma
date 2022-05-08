@@ -28,3 +28,12 @@ model Student {
   enrollments      Int
   hasCertification Boolean @default(false)
 }
+
+model MissionCommander {
+  id                    Int     @id @default(autoincrement())
+  name                  String
+  username              String  @db.VarChar(255)
+  mainStack             String
+  currentEnrollment     Boolean
+  hasAzureCertification Boolean
+}
