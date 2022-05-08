@@ -164,7 +164,13 @@ app.put('/mc/:id', async (req, res) => {
   });
 
   return res.json({message: "Actualizado correctamente"});
-})
+});
+
+app.delete('/mc/:id', async (req, res) => {
+  const id = parseInt(req.params.id);
+  await prisma.missionCommander.delete({where: {id}});
+  return res.json({message: "Eliminado correctamente"});
+});
 
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
