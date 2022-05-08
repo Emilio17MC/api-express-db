@@ -129,6 +129,24 @@ app.get('/mc/:id', async (req, res) => {
   res.json(missionCommander);
 });
 
+app.post('/mc', async (req, res) => {
+  
+  const {name, username, mainStack, currentEnrollment, hasAzureCertification} = req.body;
+  
+  const missionCommander = {
+    name,
+    username,
+    mainStack,
+    currentEnrollment,
+    hasAzureCertification  
+  }
+
+  const message = 'Mission Commander creado';
+
+  await prisma.missionCommander.create({data: missionCommander});
+  return res.json({message});
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
