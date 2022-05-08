@@ -3,43 +3,53 @@ const prisma = new PrismaClient();
 
 (async function main() {
   try {
-    const ewok = await prisma.student.upsert({
-      where: { id: 1 },
+    const commander = await prisma.missionCommander.upsert({
+      where: {id: 1},
       update: {},
       create: {
-        name: 'Ewok',
-				lang: 'JavaScript',
-				missionCommander: 'Woopa 5',
-        enrollments: 3,
-        hasCertification: false
+        name: 'Commander One',
+        username: 'comander01',
+        mainStack: 'Node',
+        currentEnrollment: true,
+        hasAzureCertification: true
       },
     });
 
-    const ewok1 = await prisma.student.upsert({
-      where: { id: 2 },
+    const commander2 = await prisma.missionCommander.upsert({
+      where: {id: 2},
       update: {},
       create: {
-        name: 'Ewok 1',
-				lang: 'Java',
-				missionCommander: 'Woopa 5',
-        enrollments: 2,
-        hasCertification: true
+        name: 'Commander Two',
+        username: 'comander02',
+        mainStack: 'Node',
+        currentEnrollment: true,
+        hasAzureCertification: true
       },
     });
 
-    const ewok2 = await prisma.student.upsert({
-      where: { id: 3 },
+    const commander3 = await prisma.missionCommander.upsert({
+      where: {id: 3},
       update: {},
       create: {
-        name: 'Ewok 2',
-				lang: 'Node',
-				missionCommander: 'Woopa 5',
-        enrollments: 3,
-        hasCertification: true
+        name: 'Commander Three',
+        username: 'comander03',
+        mainStack: 'Java',
+        currentEnrollment: false,
+        hasAzureCertification: true
       },
     });
 
-    
+    const commander4 = await prisma.missionCommander.upsert({
+      where: {id: 4},
+      update: {},
+      create: {
+        name: 'Commander Four',
+        username: 'comander04',
+        mainStack: 'Java',
+        currentEnrollment: true,
+        hasAzureCertification: true
+      },
+    });
 
     console.log('Create 3 students');
   } catch(e) {
